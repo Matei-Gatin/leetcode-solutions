@@ -9,20 +9,22 @@ class Solution {
 
         while (l < r)
         {
-            int currSum = numbers[l] + numbers[r];
+            int currentSum = numbers[l] + numbers[r];
 
-            if (currSum > target)
-            {
-                r--;
-            } else if (currSum < target)
-            {
-                l++;
-            } else
+            if (currentSum == target)
             {
                 return new int[]{l + 1, r + 1};
             }
+
+            if (currentSum > target)
+            {
+                r--;
+            } else
+            {
+                l++;
+            }
         }
 
-        return new int[]{};
+        return new int[0];
     }
 }
