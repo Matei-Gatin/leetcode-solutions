@@ -3,19 +3,12 @@ using namespace std;
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        /*
-            width = r - l;
-            height = max(height[l], height[r]);
+        int l = 0, r = height.size() - 1;
 
-            area = width * height;            
-        */
-
-        int res = 0, l = 0, r = height.size() - 1;
+        int res = 0;
 
         while (l < r) {
-            int w = r - l;
-            int h = min(height[l], height[r]);
-            int current_area = w * h;
+            int current_area = (r - l) * min(height[l], height[r]);
 
             res = max(res, current_area);
 
