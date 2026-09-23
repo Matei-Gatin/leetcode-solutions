@@ -3,10 +3,6 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        /*
-            s = "abcabcbb" 100.000 chareacters a string
-        */
-
         vector<int> seen(256, -1);
 
         int l = 0;
