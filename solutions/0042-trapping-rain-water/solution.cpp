@@ -1,25 +1,38 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
+        /*
+            height = [0,1,0,2,1,0,1,3,2,1,2,1]
+
+            [4,2,0,3,2,5]
+
+            res = 0
+
+
+        */
+
         int l = 0;
         int r = height.size() - 1;
-        
-        int max_l = height[l];
-        int max_r = height[r];
 
         int res = 0;
+        int max_hl = height[l];
+        int max_hr = height[r];
 
         while (l < r) {
-            if (max_l < max_r) {
+            if (height[l] < height[r]) {
                 l++;
-                max_l = max(max_l, height[l]);
-                res += max_l - height[l];
+                
+                max_hl = max(max_hl, height[l]);
+                
+                res += max_hl - height[l];
             } else {
                 r--;
-                max_r = max(max_r, height[r]);
-                res += max_r - height[r]; 
+
+                max_hr = max(max_hr, height[r]);
+
+                res += max_hr - height[r];
             }
-        }
+        } 
 
         return res;
     }
