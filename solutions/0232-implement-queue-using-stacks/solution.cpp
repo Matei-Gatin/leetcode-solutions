@@ -1,0 +1,53 @@
+class MyQueue {
+    // {4} -> {3, 2}
+public:
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        input.push(x);   
+    }
+    
+    int pop() {
+        shift_stacks();
+
+        int first_val {output.top()};
+
+        output.pop();
+
+        return first_val;
+    }
+    
+    int peek() {
+        shift_stacks();
+
+        return output.top();
+    }
+    
+    bool empty() {
+        return input.empty() && output.empty(); 
+    }
+
+private:
+    std::stack<int> input;
+    std::stack<int> output;
+
+    void shift_stacks() {
+        if (output.empty()) {
+            while (!input.empty()) {
+                output.push(input.top());
+                input.pop();
+            }
+        }
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
