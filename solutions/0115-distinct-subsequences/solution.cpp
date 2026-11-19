@@ -1,13 +1,13 @@
 class Solution {
 public:
     int numDistinct(string s, string t) {
-        // s = old
-        // t = new
+        // s = rabbbit (old)
+        // t = rabbit (new)
 
-        std::size_t oldLen = s.size();
-        std::size_t newLen = t.size();
+        int oldLen = s.size();
+        int newLen = t.size();
 
-        vector<std::uint64_t> ways(newLen + 1, 0); // first index is "" empty
+        std::vector<std::uint64_t> ways(newLen + 1, 0);
         ways[0] = 1;
 
         for (int i = 0; i < oldLen; i++) {
@@ -18,6 +18,6 @@ public:
             }
         }
 
-        return static_cast<int>(ways[newLen]);
+        return ways[newLen];
     }
 };
